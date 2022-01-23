@@ -1,9 +1,16 @@
-import React from 'react';
-import CardItem from '../card/card';
+import React, {useState, useCallback} from 'react';
+import CardsList from '../cards-list/cards-list';
+import CitiesList from '../cities-list/cities-list';
+import Map from '../map/map';
 import PropTypes from 'prop-types';
+import {cardItemsPropsType, cardsPropsType} from '../prop-types/prop-types-card';
+
 
 const MainPage = (props) => {
-  const {dataCards} = props;
+  const {cards} = props;
+  const [activeCard, setactiveCard] = useState(null);
+  const handleMouseEnter = useCallback((item) => setactiveCard(item), []);
+  const handleMouseLeave = useCallback(()=>setactiveCard(null), []);
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -33,37 +40,8 @@ const MainPage = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href={`#`}>
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href={`#`}>
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href={`#`}>
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href={`#`}>
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href={`#`}>
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+            <ul className="locations__list tabs__list" >
+              <CitiesList/>
             </ul>
           </section>
         </div>
@@ -88,13 +66,13 @@ const MainPage = (props) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {dataCards.map((card) => {
-                  return (<CardItem key = {card.id} card = {card}/>);
-                })}
+                <CardsList onMouseEnter = {handleMouseEnter} onMouseLeave = {handleMouseLeave}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map cards = {cards} activeCard = {activeCard}/>
+              </section>
             </div>
           </div>
         </div>
@@ -104,19 +82,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  dataCards: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        href: PropTypes.string,
-        src: PropTypes.string.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        price: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        placeType: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired
+  cards: cardItemsPropsType,
 };
 
 

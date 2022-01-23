@@ -6,23 +6,26 @@ import FavoritesPage from '../favorites/favorites';
 import LoginPage from '../login/login';
 import RoomPage from '../room/room';
 import PropTypes from 'prop-types';
+import {cardsPropsType, reviewersPropsType} from '../prop-types/prop-types-card';
 
 const App = (props) => {
-  const {dataCards} = props;
+  const {cards} = props;
+  const {reviewers} = props;
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage dataCards = {dataCards}/>
+          <MainPage cards = {cards[0].items}/>
         </Route>
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route exact path="/favorites">
-          <FavoritesPage />
+        <Route exact path="/favorites" >
+          <FavoritesPage cards = {cards}/>
         </Route>
         <Route exact path="/offer/:id">
-          <RoomPage />
+          <RoomPage neighbourhoodList = {cards[0].items.slice(0, 3)} reviewers = {reviewers}/>
         </Route>
         <Route>
           <ErrorPage />
@@ -33,19 +36,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  dataCards: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        href: PropTypes.string,
-        src: PropTypes.string.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        price: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        placeType: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        rating: PropTypes.number.isRequired
-      })
-  ).isRequired
+  cards: cardsPropsType,
+  reviewers: reviewersPropsType,
 };
 
 export default App;

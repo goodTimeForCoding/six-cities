@@ -1,19 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import propRule from '../prop-types';
+import {useHistory} from 'react-router-dom';
+import {cardItemPropsType} from '../prop-types/prop-types-card';
 
 const WIDTH_OF_STARS = 20;
 
 const CardItem = (props) => {
-  const {href, src, isPremium, price, title, placeType, isFavorite, rating} = props.card;
+  const {item, onMouseEnter, onMouseLeave} = props;
+  const {src, isPremium, price, title, placeType, isFavorite, rating, id} = item;
+  const history = useHistory();
   const premiumSticker = <div className="place-card__mark"> <span>Premium</span> </div>;
   const favoriteButton = `place-card__bookmark-button--active`;
 
   return (
-    <article className="cities__place-card place-card">
+    <article className = "cities__place-card place-card"
+      onMouseEnter = {() => {
+        onMouseEnter(item);
+      }}
+      onMouseLeave ={() => {
+        onMouseLeave();
+      }}
+    >
       {isPremium && premiumSticker}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href={href}>
+        <a onClick = {(evt) => {
+          evt.preventDefault();
+          history.push(`/offer/${id}`);
+        }} >
           <img className="place-card__image" src={src} width="260" height="200" alt="Place image"/>
         </a>
       </div>
@@ -37,7 +50,10 @@ const CardItem = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href={href}> {title} </a>
+          <a onClick = {(evt) => {
+            evt.preventDefault();
+            history.push(`/offer/${id}`);
+          }}> {title} </a>
         </h2>
         <p className="place-card__type">{placeType}</p>
       </div>
@@ -46,18 +62,17 @@ const CardItem = (props) => {
   );
 };
 
+CardItem.defaultProps = {
+  articleClass: () => undefined,
+  item: {},
+  onMouseEnter: () => undefined,
+  onMouseLeave: () => undefined,
+};
+
 CardItem.propTypes = {
-  card: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    href: PropTypes.string,
-    src: PropTypes.string.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    price: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    placeType: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    rating: PropTypes.number.isRequired
-  }).isRequired,
+  item: cardItemPropsType,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
 };
 
 
