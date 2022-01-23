@@ -13,4 +13,4 @@
 - устанавливаем необходимые пакеты: *npm install*;
 - запускаем проект: *npm start*;
 ---
-***Ссылка на готовое приложение: [https://six-cities-blue-one.vercel.app/](https://six-cities-blue-one.vercel.app/)***
+***Ссылка на приложение, которое находится в процессе разработки: [https://six-cities-blue-one.vercel.app/](https://six-cities-blue-one.vercel.app/)***
