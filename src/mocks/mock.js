@@ -1,3 +1,14 @@
+import { object } from "prop-types";
+
+const sortItem = {
+  POPULAR: `Popular`,
+  ASC_PRICE: 'Price: low to high',
+  DESC_PRICE: 'Price: high to low',
+  TOP: 'Top rated first',
+}
+
+const sortItems = Object.values(sortItem);
+
 const cards = [
   {
     city: `Paris`,
@@ -8,7 +19,7 @@ const cards = [
         src: `img/apartment-01.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 234,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
         rating: 5,
@@ -27,7 +38,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -43,7 +54,7 @@ const cards = [
         price: 132,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 4,
+        rating: 2,
         location: {
           latitude: 52.3909553943508,
           longitude: 4.929309666406198,
@@ -56,10 +67,10 @@ const cards = [
         src: `img/apartment-02.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 2342,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 1,
         location: {
           latitude: 52.3809553943508,
           longitude: 4.939309666406198,
@@ -79,10 +90,10 @@ const cards = [
         src: `img/apartment-03.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 342,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 1,
         location: {
           latitude: 52.3909553943508,
           longitude: 4.85309666406198,
@@ -98,7 +109,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -114,7 +125,7 @@ const cards = [
         price: 132,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 4,
+        rating: 3,
         location: {
           latitude: 52.3909553943508,
           longitude: 4.929309666406198,
@@ -127,10 +138,10 @@ const cards = [
         src: `img/apartment-03.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 322,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 2,
         location: {
           latitude: 52.3809553943508,
           longitude: 4.939309666406198,
@@ -150,7 +161,7 @@ const cards = [
         src: `img/apartment-02.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 22,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
         rating: 5,
@@ -169,7 +180,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -198,10 +209,10 @@ const cards = [
         src: `img/apartment-01.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 227,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 2,
         location: {
           latitude: 52.3809553943508,
           longitude: 4.939309666406198,
@@ -221,10 +232,10 @@ const cards = [
         src: `img/apartment-02.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 278,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.3909553943508,
           longitude: 4.85309666406198,
@@ -240,7 +251,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 1,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -269,7 +280,7 @@ const cards = [
         src: `img/apartment-01.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 534,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
         rating: 5,
@@ -292,10 +303,10 @@ const cards = [
         src: `img/apartment-02.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 453,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 2,
         location: {
           latitude: 52.3909553943508,
           longitude: 4.85309666406198,
@@ -311,7 +322,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -340,7 +351,7 @@ const cards = [
         src: `img/apartment-01.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 645,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
         rating: 5,
@@ -363,7 +374,7 @@ const cards = [
         src: `img/apartment-03.jpg`,
         isPremium: true,
         isFavorite: true,
-        price: 180,
+        price: 163,
         title: `Beautiful & luxurious apartment at great location`,
         placeType: `Apartment`,
         rating: 5,
@@ -382,7 +393,7 @@ const cards = [
         price: 80,
         title: `Wood and stone place`,
         placeType: `Private room`,
-        rating: 5,
+        rating: 3,
         location: {
           latitude: 52.369553943508,
           longitude: 4.85309666406198,
@@ -411,10 +422,10 @@ const cards = [
         src: `img/apartment-01.jpg`,
         isPremium: true,
         isFavorite: false,
-        price: 180,
+        price: 453,
         title: `Nice, cozy, warm big bed apartment`,
         placeType: `Apartment`,
-        rating: 5,
+        rating: 2,
         location: {
           latitude: 52.3809553943508,
           longitude: 4.939309666406198,
@@ -490,4 +501,4 @@ const reviewers = [
 ];
 
 
-export {cards, reviewers};
+export {cards, reviewers, sortItem, sortItems};

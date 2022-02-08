@@ -13,7 +13,7 @@ const CitiesList = (props) => {
           const active = item.id === selectedCityId ? `tabs__item--active` : ``;
           return (
             <li key={item.id} className="locations__item" >
-              <a className={`locations__item-link tabs__item ${active}`} href={`#`}
+              <a className = {`locations__item-link tabs__item ${active}`}   href={`#`}
                 onClick={() => onClick(item)}> {/* компонента вызывает функцию-колбэк с параметром при клике, параметр передаём как payload(элемент объекта action), и обрабатываем его в reducer*/}
                 <span>{item.city}</span>
               </a>
@@ -31,14 +31,14 @@ CitiesList.propTypes = {
 
 
 const mapStateToProps = (state) => { /* функция преобразующая часть состояния в пропсы, она принимает состояние хранилища initialState, и в объекте вытаскивает нужные данные из сотояния и они станут пропсами*/
-  console.log(state); /* для просмотра структуры объекта состояния*/
+  // console.log(state); /* для просмотра структуры объекта состояния*/
   return {
     citiesData: state.cities, /* выбираем нужные данные для пропса из объекта состояния*/
-    selectedCityId: state.selectedCity.id,
+    selectedCityId: state.selectedCity,
   };
 };
 
-const mapDispatchToProps = (dispatch) => { // преобразователь вызовов диспетчера в пропсы, ключи объекта который вернёт mapDispatchToProps станут пропсами, но в виде функций, то есть onClick это колбэк который передаётся в компоненту в виде пропса
+const mapDispatchToProps = (dispatch) => { // преобразователь вызовов диспетчера в пропсы, ключи объекта который вернёт mapDispatchToProps станут пропсами, но в виде функций, то есть onClick это колбэк который передаётся компоненту в виде пропса
   return {
     onClick: (it) => {
       dispatch(ActionCreator.selectCity(it));

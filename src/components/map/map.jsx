@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 import leaflet from 'leaflet';
-import PropTypes from 'prop-types';
 import {cardItemsPropsType, cardItemPropsType} from '../prop-types/prop-types-card';
 import 'leaflet/dist/leaflet.css';
 
@@ -26,12 +25,13 @@ const Map = (props) => {
       })
       .addTo(settings);
 
+
     setMapSettings(settings);
 
     return () => {
       mapRef.current.remove();
     };
-  }, [mapRef, cards, setMapSettings]);
+  }, []);
 
   /*добавит эффект подсветки*/
   useEffect(() => {
@@ -57,7 +57,7 @@ const Map = (props) => {
   }, [cards, activeCard, mapSettings]);
 
   return (
-    <div style={{height: `100%`}} ref={mapRef}/>
+    <div style={{height: `100%`}} ref={mapRef}></div>
   );
 };
 

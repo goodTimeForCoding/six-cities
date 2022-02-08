@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CardsList from '../cards-list/cards-list';
 import {cardsPropsType} from '../prop-types/prop-types-card';
 

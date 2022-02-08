@@ -7,9 +7,7 @@ import App from './components/app/app';
 import {cards, reviewers} from './mocks/mock';
 import {reducer} from './redux/reducer';
 
-const store = createStore(
-  reducer,
-  composeWithDevTools()
+const store = createStore(reducer, composeWithDevTools()
 );
 /* <Provider/> - компонент высшего порядка обернув наше приложение, добавляем доп. функционал App - компоненту*/
 ReactDOM.render(

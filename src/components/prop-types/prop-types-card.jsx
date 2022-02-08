@@ -47,4 +47,5 @@ const reviewersPropsType = PropTypes.arrayOf(
 );
 
 
+
 export {cardItemsPropsType, cardsPropsType, cardItemPropsType, reviewersPropsType, cityItemPropsType};
