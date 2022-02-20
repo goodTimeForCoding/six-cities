@@ -5,7 +5,6 @@ import ErrorPage from '../error/error';
 import FavoritesPage from '../favorites/favorites';
 import LoginPage from '../login/login';
 import RoomPage from '../room/room';
-import PropTypes from 'prop-types';
 import {cardsPropsType, reviewersPropsType} from '../prop-types/prop-types-card';
 
 const App = (props) => {

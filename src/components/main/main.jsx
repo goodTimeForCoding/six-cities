@@ -1,18 +1,34 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import CardsList from '../cards-list/cards-list';
 import CitiesList from '../cities-list/cities-list';
 import PlacesCount from '../places-count/places-count';
 import Map from '../map/map';
 import Sort from '../sort/sort';
+import Spinner from '../spinner/spinner';
+import {fetchCardsList} from '../../redux/thunks';
 import {connect} from 'react-redux';
 import { cardItemsPropsType} from '../prop-types/prop-types-card';
 
-
 const MainPage = (props) => {
-  const { citiesData } = props;
+  const { citiesData, isDataLoaded, onLoadData, hotels } = props;
+  console.log(hotels);
   const [activeCard, setactiveCard] = useState(null);
   const handleMouseEnter = useCallback((item) => setactiveCard(item), []);
   const handleMouseLeave = useCallback(() => setactiveCard(null), []);
+
+  useEffect(() => {
+    if (!isDataLoaded) {
+      onLoadData();
+    }
+  }, [onLoadData]);
+
+  if (!isDataLoaded) {
+    return (
+      <Spinner />
+    );
+  }
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -71,14 +87,23 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   citiesData: cardItemsPropsType,
+  isDataLoaded: PropTypes.bool.isRequired,
+  loadData: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
   return {
     citiesData: state.offers,
+    isDataLoaded: state.isDataLoaded,
+    hotels: state.hotels
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onLoadData() {
+    dispatch(fetchCardsList());
+  },
+});
 
 export  {MainPage};
-export default connect(mapStateToProps, null)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

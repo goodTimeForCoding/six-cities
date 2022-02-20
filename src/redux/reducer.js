@@ -1,5 +1,6 @@
 import { ActionType } from "./action";
-import { cards, sortItem, sortItems } from "../mocks/mock";
+import { cards } from "../mocks/mock";
+import {AuthorizationStatus,sortItem, sortItems} from '.././const';
 
 const initialState = {
   offers: cards[0].items,
@@ -7,6 +8,9 @@ const initialState = {
   selectedCity: cards[0].id,
   sortItems: sortItems,
   selectedSort: sortItem.POPULAR,
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isDataLoaded: false,
+  hotels: []
 };
 
 // в зависимости от ActionType мы меняем reducer; Для reducer initialState в замыкании
@@ -26,6 +30,22 @@ const reducer = (state = initialState, action) => {
         selectedSort: action.payload,
       };
     }
+
+    case ActionType.LOAD_CARDS: {
+      return {
+        ...state,
+        hotels: action.payload,
+        isDataLoaded: true,
+      };
+    }
+
+    // case ActionType.REQUIRED_AUTHORIZATION: {
+    //   return {
+    //     ...state,
+    //     authorizationStatus: action.payload,
+    //   };
+    // }
+
 
     default: {
       return state;

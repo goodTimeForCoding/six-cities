@@ -1,4 +1,4 @@
-import { sortItem } from "../mocks/mock";
+import {sortItem} from '.././const';
 
 const getFilterOffers = (state) => {
   switch (state.selectedSort) {

@@ -5,7 +5,8 @@ import {cardItemsPropsType} from '../prop-types/prop-types-card';
 const PlacesCount = (props) => {
   const {places} = props;
   const placesCount = places.length;
-  const cityName =  places[0].name;
+  // const cityName =  places[0].name;
+  const cityName =  null;
   return (
     <>
        <b className="places__found">{placesCount} places to stay in {cityName}</b>

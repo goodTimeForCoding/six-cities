@@ -1,13 +1,3 @@
-import { object } from "prop-types";
-
-const sortItem = {
-  POPULAR: `Popular`,
-  ASC_PRICE: 'Price: low to high',
-  DESC_PRICE: 'Price: high to low',
-  TOP: 'Top rated first',
-}
-
-const sortItems = Object.values(sortItem);
 
 const cards = [
   {
@@ -501,4 +491,4 @@ const reviewers = [
 ];
 
 
-export {cards, reviewers, sortItem, sortItems};
+export {cards, reviewers};
