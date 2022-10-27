@@ -15,16 +15,19 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage/>
+          <MainPage />
         </Route>
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route exact path="/favorites" >
-          <FavoritesPage cards = {cards}/>
+        <Route exact path="/favorites">
+          <FavoritesPage
+            cards={cards} />
         </Route>
         <Route exact path="/offer/:id">
-          <RoomPage neighbourhoodList = {cards[0].items.slice(0, 3)} reviewers = {reviewers}/>
+          <RoomPage
+            neighbourhoodList={cards[0].items.slice(0, 3)}
+            reviewers={reviewers} />
         </Route>
         <Route>
           <ErrorPage />

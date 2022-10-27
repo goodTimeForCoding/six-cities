@@ -36,7 +36,7 @@ const Map = (props) => {
   /*добавит эффект подсветки*/
   useEffect(() => {
     if (mapSettings) {
-      cards.map((item)=> {
+      cards.map((item) => {
         const isActive = activeCard ? item.id === activeCard.id : false;
         const customIcon = leaflet.icon({
           iconUrl: isActive ? `img/pin-active.svg` : `img/pin.svg`,
@@ -47,11 +47,11 @@ const Map = (props) => {
           lat: item.location.latitude,
           lng: item.location.longitude
         },
-        {
-          icon: customIcon
-        })
-        .addTo(mapSettings)
-        .bindPopup(item.name);
+          {
+            icon: customIcon
+          })
+          .addTo(mapSettings)
+          .bindPopup(item.name);
       });
     }
   }, [cards, activeCard, mapSettings]);

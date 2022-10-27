@@ -12,22 +12,26 @@ const CardItem = (props) => {
   const premiumSticker = <div className="place-card__mark"> <span>Premium</span> </div>;
   const favoriteButton = `place-card__bookmark-button--active`;
 
+  const handleMouseEnter = () => {
+    onMouseEnter(item);
+  }
+
+  const handleMouseLeave = () => {
+    onMouseLeave();
+  }
+
+
   return (
-    <article className = "cities__place-card place-card"
-      onMouseEnter = {() => {
-        onMouseEnter(item);
-      }}
-      onMouseLeave ={() => {
-        onMouseLeave();
-      }}
-    >
+    <article className="cities__place-card place-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
       {isPremium && premiumSticker}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a onClick = {(evt) => {
+        <a onClick={(evt) => {
           evt.preventDefault();
           history.push(`/offer/${id}`);
         }} >
-          <img className="place-card__image" src={src} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={src} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -50,7 +54,7 @@ const CardItem = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a onClick = {(evt) => {
+          <a onClick={(evt) => {
             evt.preventDefault();
             history.push(`/offer/${id}`);
           }}> {title} </a>

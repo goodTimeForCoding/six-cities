@@ -10,10 +10,10 @@ const ReviewsList = (props) => {
     <>
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
       <ul className="reviews__list">
-        {reviewers.map((item)=>{
+        {reviewers.map((item) => {
           return (
-            <li className="reviews__item" key = {item.id}>
-              <ReviewsItem item = {item}/>
+            <li className="reviews__item" key={item.id}>
+              <ReviewsItem item={item} />
             </li>
           );
         })}

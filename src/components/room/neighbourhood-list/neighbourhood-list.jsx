@@ -4,7 +4,7 @@ import {cardsPropsType} from '../prop-types/prop-types-card';
 
 const NeighbourhoodList = (props) => {
   return (
-    <CardsList/>
+    <CardsList />
   );
 
 };

@@ -11,7 +11,7 @@ const CardsList = (props) => {
   return (
     <>
       {
-        offersData.map((item)=> {
+        offersData.map((item) => {
           return (
             <CardItem
               item={item}

@@ -1,11 +1,10 @@
-import { ActionType } from "./action";
-import { cards } from "../mocks/mock";
-import {AuthorizationStatus,sortItem, sortItems} from '.././const';
+import {ActionType} from "./action";
+import {AuthorizationStatus, sortItem, sortItems} from '.././const';
 
 const initialState = {
-  offers: cards[0].items,
-  cities: cards,
-  selectedCity: cards[0].id,
+  offers: [],
+  cities: [],
+  selectedCity: null,
   sortItems: sortItems,
   selectedSort: sortItem.POPULAR,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -34,7 +33,9 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_CARDS: {
       return {
         ...state,
-        hotels: action.payload,
+        cities: action.payload,
+        offers: action.payload[0].items,
+        selectedCity: action.payload[0].id,
         isDataLoaded: true,
       };
     }
@@ -53,4 +54,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export { reducer };
+export {reducer};

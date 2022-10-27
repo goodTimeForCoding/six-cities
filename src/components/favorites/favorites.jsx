@@ -42,7 +42,7 @@ const Favorites = (props) => {
                   <li key={`${card.id}`} className="favorites__locations-items">
                     <div className="favorites__locations locations locations--current">
                       <div className="locations__item">
-                        <Link className="locations__item-link" to = '#'>
+                        <Link className="locations__item-link" to='#'>
                           <span>{card.city}</span>
                         </Link>
                       </div>

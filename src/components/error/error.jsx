@@ -11,7 +11,9 @@ const ErrorPage = (props) => {
             <h1 className="visually-hidden">Error</h1>
             <div className="favorites__status-wrapper">
               <b className="favorites__status">404 Not Found.</b>
-              <Link to='/' className="favorites__status-description">Перейти на главную</Link>
+              <Link to='/' className="favorites__status-description">
+                Перейти на главную
+              </Link>
             </div>
           </section>
         </div>

@@ -2,9 +2,9 @@ export const ActionType = {
   SELECT_CITY: `CITIES/SELECT_CITY`,
   SELECT_SORT: 'SORT/SELECT_SORT',
   LOAD_CARDS: 'DATA/LOAD_CARDS',
-  };
+};
 
-//задача ActionCreator-ров сгенерировать объект с определённым типом и payload-ом
+//задача ActionCreator-ров сгенерировать объект с определённым типом и payload(полезная нагрузка)
 export const ActionCreator = {
   selectCity: (city) => ({
     type: ActionType.SELECT_CITY,

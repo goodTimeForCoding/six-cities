@@ -17,8 +17,6 @@ const cardItemPropsType = PropTypes.shape({
   name: PropTypes.string.isRequired,
 });
 
-
-
 const cardItemsPropsType = PropTypes.arrayOf(cardItemPropsType).isRequired;
 
 const cityItemPropsType = PropTypes.shape({
@@ -30,20 +28,20 @@ const cityItemPropsType = PropTypes.shape({
 const cardsPropsType = PropTypes.arrayOf(cityItemPropsType).isRequired;
 
 const reviewersPropsType = PropTypes.arrayOf(
-    PropTypes.shape({
-      comment: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      rating: PropTypes.number.isRequired,
-      user: PropTypes.shape(
-          {
-            avatarUrl: PropTypes.string.isRequired,
-            id: PropTypes.number.isRequired,
-            isPro: PropTypes.bool.isRequired,
-            name: PropTypes.string.isRequired,
-          }
-      )
-    })
+  PropTypes.shape({
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    user: PropTypes.shape(
+      {
+        avatarUrl: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        isPro: PropTypes.bool.isRequired,
+        name: PropTypes.string.isRequired,
+      }
+    )
+  })
 );
 
 
