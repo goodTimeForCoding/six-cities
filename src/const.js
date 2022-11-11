@@ -3,14 +3,14 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 }
 
-const sortItem = {
+const SortItem = {
   POPULAR: `Popular`,
   ASC_PRICE: 'Price: low to high',
   DESC_PRICE: 'Price: high to low',
   TOP: 'Top rated first',
 }
 
-const sortItems = Object.values(sortItem);
+const sortItems = Object.values(SortItem);
 
 
-export {AuthorizationStatus, sortItem, sortItems};
+export {AuthorizationStatus, SortItem, sortItems};

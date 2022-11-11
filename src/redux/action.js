@@ -1,7 +1,8 @@
 export const ActionType = {
-  SELECT_CITY: `CITIES/SELECT_CITY`,
-  SELECT_SORT: 'SORT/SELECT_SORT',
+  SELECT_CITY: `DATA/SELECT_CITY`,
+  SELECT_SORT: 'DATA/SELECT_SORT',
   LOAD_CARDS: 'DATA/LOAD_CARDS',
+  REQUIRED_AUTHORIZATION: 'USER/REQUIRED_AUTHORIZATION',
 };
 
 //задача ActionCreator-ров сгенерировать объект с определённым типом и payload(полезная нагрузка)
@@ -11,9 +12,9 @@ export const ActionCreator = {
     payload: city
   }),
 
-  selectSort: (sortItem) => ({
+  selectSort: (SortItem) => ({
     type: ActionType.SELECT_SORT,
-    payload: sortItem
+    payload: SortItem
   }),
 
   loadData: (data) => ({
@@ -21,8 +22,8 @@ export const ActionCreator = {
     payload: data
   }),
 
-  // requireAuthorization: (status) => ({
-  //   type: ActionType.REQUIRED_AUTHORIZATION,
-  //   payload: status,
-  // })
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
+  })
 }

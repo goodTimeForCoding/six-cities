@@ -1,8 +1,8 @@
-import {sortItem} from '.././const';
+import {SortItem} from '.././const';
 
 const getFilterOffers = (state) => {
   switch (state.selectedSort) {
-    case sortItem.ASC_PRICE: {
+    case SortItem.ASC_PRICE: {
       return state.offers.slice().sort(
         function (a, b) {
           if (a.price > b.price) {
@@ -16,7 +16,7 @@ const getFilterOffers = (state) => {
       );
     }
 
-    case sortItem.DESC_PRICE: {
+    case SortItem.DESC_PRICE: {
       return state.offers.slice().sort(
         function (a, b) {
           if (a.price < b.price) {
@@ -30,7 +30,7 @@ const getFilterOffers = (state) => {
       );
     }
 
-    case sortItem.TOP: {
+    case SortItem.TOP: {
       return state.offers.slice().sort(
         function (a, b) {
           if (a.rating < b.rating) {

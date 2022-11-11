@@ -5,6 +5,7 @@ import ErrorPage from '../error/error';
 import FavoritesPage from '../favorites/favorites';
 import LoginPage from '../login/login';
 import RoomPage from '../room/room';
+import PrivateRoute from '../private-route/private-route';
 import {cardsPropsType, reviewersPropsType} from '../prop-types/prop-types-card';
 
 const App = (props) => {
@@ -20,10 +21,11 @@ const App = (props) => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route exact path="/favorites">
-          <FavoritesPage
-            cards={cards} />
-        </Route>
+        <PrivateRoute exact
+          path="/favorites"
+          render={() => <FavoritesPage cards={cards} />}
+        >
+        </PrivateRoute>
         <Route exact path="/offer/:id">
           <RoomPage
             neighbourhoodList={cards[0].items.slice(0, 3)}

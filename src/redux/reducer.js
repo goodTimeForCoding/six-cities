@@ -1,12 +1,12 @@
 import {ActionType} from "./action";
-import {AuthorizationStatus, sortItem, sortItems} from '.././const';
+import {AuthorizationStatus, SortItem, sortItems} from '.././const';
 
 const initialState = {
   offers: [],
   cities: [],
   selectedCity: null,
   sortItems: sortItems,
-  selectedSort: sortItem.POPULAR,
+  selectedSort: SortItem.POPULAR,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
   hotels: []
@@ -40,13 +40,12 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    // case ActionType.REQUIRED_AUTHORIZATION: {
-    //   return {
-    //     ...state,
-    //     authorizationStatus: action.payload,
-    //   };
-    // }
-
+    case ActionType.REQUIRED_AUTHORIZATION: {
+      return {
+        ...state,
+        authorizationStatus: action.payload,
+      };
+    }
 
     default: {
       return state;
