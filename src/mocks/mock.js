@@ -490,32 +490,5 @@ const reviewers = [
   },
 ];
 
-const CitiesList = [
-  {
-    id: 111,
-    city: `Paris`,
-  },
-  {
-    id: 222,
-    city: `Cologne`,
-  },
-  {
-    id: 333,
-    city: `Brussels`,
-  },
-  {
-    id: 444,
-    city: `Amsterdam`,
-  },
-  {
-    id: 555,
-    city: `Hamburg`,
-  },
-  {
-    id: 666,
-    city: `Dusseldorf`,
-  },
-];
 
-
-export {cards, reviewers, CitiesList};
+export {cards, reviewers};

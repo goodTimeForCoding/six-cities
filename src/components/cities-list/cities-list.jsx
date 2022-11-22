@@ -27,6 +27,8 @@ const CitiesList = (props) => {
 
 CitiesList.propTypes = {
   citiesData: cardsPropsType,
+  selectedCityId: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 /*

@@ -14,10 +14,6 @@ const PlacesCount = (props) => {
   );
 };
 
-PlacesCount.defaultProps = {
-  places: {},
-};
-
 PlacesCount.propTypes = {
   places: cardItemsPropsType,
 };

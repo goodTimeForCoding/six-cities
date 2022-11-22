@@ -1,5 +1,5 @@
 import {ActionCreator} from "./action";
-import {CitiesList} from "../mocks/mock";
+import {cities} from "../const";
 import {adaptToClient} from "../redux/utils";
 import {AuthorizationStatus} from ".././const";
 
@@ -12,7 +12,7 @@ const fetchCardsList = () => (dispatch, _getState, api) =>
   api.get(`/hotels`)
     .then(({data}) => {
       const res = data.map((item) => adaptToClient(item));
-      CitiesList.map((item) => {
+      cities.map((item) => {
         item.items = [];
         res.forEach((it) => {
           if (item.city === it.city.name) {
@@ -20,7 +20,7 @@ const fetchCardsList = () => (dispatch, _getState, api) =>
           }
         });
       });
-      dispatch(ActionCreator.loadData(CitiesList));
+      dispatch(ActionCreator.loadData(cities));
     });
 
 //провера наличия авторизации
@@ -33,7 +33,9 @@ const checkAuth = () => (dispatch, _getState, api) => (
 //отправки данных для прохождения аутентификации
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
+    .then(({data}) => {dispatch(ActionCreator.getEmail(data.email))})
     .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(ActionCreator.redirectToRoute('/')))
 );
 
 

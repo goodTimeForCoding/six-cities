@@ -1,40 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {cardItemsPropsType, reviewersPropsType} from '../prop-types/prop-types-card';
 import CardsList from '../cards-list/cards-list';
 import Map from '../map/map';
+import Header from '../header/header';
 import CommentForm from './comment-form/comment-form';
 import ReviewsList from './reviews-list/reviews-list';
 
 const Room = (props) => {
-  const {neighbourhoodList} = props;
-  const {reviewers} = props;
+  const {neighbourhoodList, reviewers, authorizationStatus} = props;
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Link className="header__logo-link" to='/'>
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </Link>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href={`#`}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -157,7 +136,7 @@ const Room = (props) => {
 
               <section className="property__reviews reviews">
                 <ReviewsList reviewers={reviewers} key={reviewers.id} />
-                <CommentForm />
+                {authorizationStatus ? <CommentForm /> : ''}
               </section>
             </div>
           </div>
@@ -181,7 +160,14 @@ const Room = (props) => {
 Room.propTypes = {
   neighbourhoodList: cardItemsPropsType,
   reviewers: reviewersPropsType,
+  authorizationStatus: PropTypes.string.isRequired,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    authorizationStatus: state.authorizationStatus,
+  };
 };
 
-
-export default Room;
+export {Room}
+export default connect(mapStateToProps, null)(Room);

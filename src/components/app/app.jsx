@@ -1,11 +1,12 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';//Router as BrowserRouter для использования своей сконфигурированной history
 import MainPage from '../main/main';
 import ErrorPage from '../error/error';
 import FavoritesPage from '../favorites/favorites';
 import LoginPage from '../login/login';
 import RoomPage from '../room/room';
 import PrivateRoute from '../private-route/private-route';
+import browserHistory from "../../browser-history";
 import {cardsPropsType, reviewersPropsType} from '../prop-types/prop-types-card';
 
 const App = (props) => {
@@ -13,18 +14,22 @@ const App = (props) => {
   const {reviewers} = props;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/">
-          <MainPage />
-        </Route>
+        <Route exact path="/"
+          render={({history}) => {
+            return (
+              <MainPage
+                onCardClick={(id) => history.push(`/offer/:${id}`)}
+              />
+            );
+          }}
+        />
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <PrivateRoute exact
-          path="/favorites"
-          render={() => <FavoritesPage cards={cards} />}
-        >
+        <PrivateRoute exact path="/favorites"
+          render={() => <FavoritesPage cards={cards} />}>
         </PrivateRoute>
         <Route exact path="/offer/:id">
           <RoomPage

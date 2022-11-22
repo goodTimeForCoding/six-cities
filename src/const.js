@@ -10,7 +10,34 @@ const SortItem = {
   TOP: 'Top rated first',
 }
 
+const cities = [
+  {
+    id: 111,
+    city: `Paris`,
+  },
+  {
+    id: 222,
+    city: `Cologne`,
+  },
+  {
+    id: 333,
+    city: `Brussels`,
+  },
+  {
+    id: 444,
+    city: `Amsterdam`,
+  },
+  {
+    id: 555,
+    city: `Hamburg`,
+  },
+  {
+    id: 666,
+    city: `Dusseldorf`,
+  },
+];
+
 const sortItems = Object.values(SortItem);
 
 
-export {AuthorizationStatus, SortItem, sortItems};
+export {AuthorizationStatus, SortItem, sortItems, cities};

@@ -1,12 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {useHistory} from 'react-router-dom';
 import {cardItemPropsType} from '../prop-types/prop-types-card';
+import {ActionCreator} from '../../redux/action';
 
 const WIDTH_OF_STARS = 20;
 
 const CardItem = (props) => {
-  const {item, onMouseEnter, onMouseLeave} = props;
+  const {item, onMouseEnter, onMouseLeave, onClick, onCardClick} = props;
   const {src, isPremium, price, title, placeType, isFavorite, rating, id} = item;
   const history = useHistory();
   const premiumSticker = <div className="place-card__mark"> <span>Premium</span> </div>;
@@ -20,16 +22,15 @@ const CardItem = (props) => {
     onMouseLeave();
   }
 
-
   return (
     <article className="cities__place-card place-card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       {isPremium && premiumSticker}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a onClick={(evt) => {
-          evt.preventDefault();
-          history.push(`/offer/${id}`);
+        <a onClick={() => {
+          onClick(id);
+          onCardClick(id);
         }} >
           <img className="place-card__image" src={src} width="260" height="200" alt="Place image" />
         </a>
@@ -54,9 +55,9 @@ const CardItem = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a onClick={(evt) => {
-            evt.preventDefault();
-            history.push(`/offer/${id}`);
+          <a onClick={() => {
+            onClick(id);
+            onCardClick(id);
           }}> {title} </a>
         </h2>
         <p className="place-card__type">{placeType}</p>
@@ -66,18 +67,26 @@ const CardItem = (props) => {
   );
 };
 
-CardItem.defaultProps = {
-  articleClass: () => undefined,
-  item: {},
-  onMouseEnter: () => undefined,
-  onMouseLeave: () => undefined,
-};
-
 CardItem.propTypes = {
   item: cardItemPropsType,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => {
+  return {
+  };
+};
 
-export default CardItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: (it) => {
+      dispatch(ActionCreator.selectCard(it));
+    },
+  };
+};
+
+export {CardItem};
+export default connect(mapStateToProps, mapDispatchToProps)(CardItem);

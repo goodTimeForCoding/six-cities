@@ -36,6 +36,11 @@ const Sort = (props) => {
   );
 }
 
+Sort.propTypes = {
+  selectedSort: PropTypes.string.isRequired,
+  sortItems: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onClick: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -51,14 +56,6 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-Sort.propTypes = {
-  selectedSort: PropTypes.string.isRequired,
-  sortItems: PropTypes.arrayOf(PropTypes.string.isRequired),
-  onClick: PropTypes.func.isRequired,
-};
-
-
 
 export {Sort};
 export default connect(mapStateToProps, mapDispatchToProps)(Sort);

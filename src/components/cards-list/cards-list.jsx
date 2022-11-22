@@ -6,7 +6,7 @@ import {cardItemsPropsType} from '../prop-types/prop-types-card';
 import {getFilterOffers} from '../../redux/selectors'
 
 const CardsList = (props) => {
-  const {offersData, onMouseEnter, onMouseLeave} = props;
+  const {offersData, onMouseEnter, onMouseLeave, onCardClick} = props;
 
   return (
     <>
@@ -18,6 +18,7 @@ const CardsList = (props) => {
               key={item.id}
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
+              onCardClick={onCardClick}
             />
           );
         })
@@ -26,16 +27,11 @@ const CardsList = (props) => {
   );
 };
 
-CardsList.defaultProps = {
-  offersData: {},
-  onMouseEnter: () => undefined,
-  onMouseLeave: () => undefined,
-};
-
 CardsList.propTypes = {
   offersData: cardItemsPropsType,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

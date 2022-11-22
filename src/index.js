@@ -11,7 +11,7 @@ import {createAPI} from "./services/api";
 import {ActionCreator} from "./redux/action";
 import {checkAuth} from "./redux/thunks";
 import {AuthorizationStatus} from "./const";
-
+import {redirect} from "./middlewares/redirect";
 
 /*Внутри колбэк который вызываем в случае неавторизованности в api.js*/
 const api = createAPI(
@@ -22,6 +22,7 @@ const api = createAPI(
 //добавляем поддержку танков хранилищу, с аргументом сконфигурированного экземпляра `axios`, чтобы была возможность обратиться к api из асинхронных действий
 const store = createStore(reducer, composeWithDevTools(
   applyMiddleware(thunk.withExtraArgument(api)),
+  applyMiddleware(redirect),
 ));
 
 //проверка на авторизованность
