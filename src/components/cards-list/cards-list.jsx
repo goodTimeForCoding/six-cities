@@ -27,6 +27,12 @@ const CardsList = (props) => {
   );
 };
 
+CardsList.defaultProps = {
+  onMouseEnter: () => undefined,
+  onMouseLeave: () => undefined,
+  onCardClick: () => undefined,
+};
+
 CardsList.propTypes = {
   offersData: cardItemsPropsType,
   onMouseEnter: PropTypes.func.isRequired,

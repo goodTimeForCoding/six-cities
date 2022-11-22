@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {useHistory} from 'react-router-dom';
 import {cardItemPropsType} from '../prop-types/prop-types-card';
 import {ActionCreator} from '../../redux/action';
 
@@ -10,7 +9,6 @@ const WIDTH_OF_STARS = 20;
 const CardItem = (props) => {
   const {item, onMouseEnter, onMouseLeave, onClick, onCardClick} = props;
   const {src, isPremium, price, title, placeType, isFavorite, rating, id} = item;
-  const history = useHistory();
   const premiumSticker = <div className="place-card__mark"> <span>Premium</span> </div>;
   const favoriteButton = `place-card__bookmark-button--active`;
 
@@ -65,6 +63,13 @@ const CardItem = (props) => {
     </article>
 
   );
+};
+
+CardItem.defaultProps = {
+  onMouseEnter: () => undefined,
+  onMouseLeave: () => undefined,
+  onClick: () => undefined,
+  onCardClick: () => undefined,
 };
 
 CardItem.propTypes = {
