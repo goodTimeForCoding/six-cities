@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import {cardItemsPropsType, cardItemPropsType} from '../prop-types/prop-types-card';
 import 'leaflet/dist/leaflet.css';
@@ -6,36 +6,31 @@ import 'leaflet/dist/leaflet.css';
 const Map = (props) => {
   const {cards, activeCard} = props;
   const mapRef = useRef(null);
-  const [mapSettings, setMapSettings] = useState(null);
-  const [firstItem = {}] = cards;
 
   /*инициализируем карту при первой отрисовке*/
   useEffect(() => {
-    const settings = leaflet.map(mapRef.current, {
+    mapRef.current = leaflet.map(`map`, {
       center: {
-        lat: firstItem.location.latitude,
-        lng: firstItem.location.longitude
+        lat: cards[0].city.location.latitude,
+        lng: cards[0].city.location.longitude
       },
-      zoom: firstItem.location.zoom
+      zoom: cards[0].city.location.zoom
     });
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(settings);
-
-
-    setMapSettings(settings);
+      .addTo(mapRef.current);
 
     return () => {
       mapRef.current.remove();
     };
-  }, []);
+  }, [cards, mapRef]);
 
   /*добавит эффект подсветки*/
   useEffect(() => {
-    if (mapSettings) {
+    if (mapRef.current) {
       cards.map((item) => {
         const isActive = activeCard ? item.id === activeCard.id : false;
         const customIcon = leaflet.icon({
@@ -50,14 +45,14 @@ const Map = (props) => {
           {
             icon: customIcon
           })
-          .addTo(mapSettings)
-          .bindPopup(item.name);
+          .addTo(mapRef.current)
+          .bindPopup(item.title);
       });
     }
-  }, [cards, activeCard, mapSettings]);
+  }, [cards, activeCard, mapRef]);
 
   return (
-    <div style={{height: `100%`}} ref={mapRef}></div>
+    <div id="map" style={{height: `100%`}} ref={mapRef}></div>
   );
 };
 

@@ -1,5 +1,4 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CardsList from '../cards-list/cards-list';
 import CitiesList from '../cities-list/cities-list';
